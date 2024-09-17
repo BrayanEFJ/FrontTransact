@@ -1,10 +1,32 @@
-import React, { useState, useRef } from 'react';
-import { NavBar } from '../components/NavBar';
+import React, { useState, useRef, useEffect } from 'react'; import { NavBar } from '../components/NavBar';
 import ChoosecolorButton from '../components/ChooseColorButton.jsx';
 import TimeLine from '../components/Timeline.jsx';
 import Footer from '../components/Footer.jsx';
 import TransactSvg from '../assets/logo_transact_sinfondo.png';
 import VisaLogo from '../assets/visalogo.png';
+
+const useWindowSize = () => {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Llamada inicial para establecer el tamaño
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowSize;
+};
 
 const Home = () => {
 
@@ -13,6 +35,8 @@ const Home = () => {
   const aboutSectionRef = useRef(null);
   const featuresSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
+  const { height } = useWindowSize();
+
 
 
   // Función para hacer scroll a la sección
@@ -37,7 +61,7 @@ const Home = () => {
     <>
       <NavBar scrollToSection={scrollToSection} />
 
-      <div className=' flex flex-wrap w-full h-screen text-white lg:flex-row bg-black'>
+      <div className=' flex flex-wrap w-full min-h-screen text-white lg:flex-row bg-black'>
         <div className='bg-black lg:w-1/2 flex justify-center items-center max-lg:mt-20 flex-col w-full'>
           <div className='space-y-4 mx-6'>
             <div className='text-white rounded-lg font-semibold'>
@@ -126,20 +150,23 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div ref={featuresSectionRef} className='flex items-center justify-center h-screen w-full bg-gradient-to-b from-black to-[#403d39]  transition-colors duration-1000 ease-in-out'>
-      <TimeLine></TimeLine>
-
+      <div ref={featuresSectionRef} className='flex flex-col items-center justify-center min-h-screen w-full bg-black'>
+        <div className={`w-full bg-black ${height < 700 ? 'h-40' : 'h-10'}`}></div>
+        <div className='flex-grow w-full bg-gradient-to-b from-black to-[#403d39] transition-colors duration-1000 ease-in-out'>
+          <TimeLine />
+        </div>
       </div>
 
-      <div ref={aboutSectionRef} className='h-screen w-full bg-gradient-to-b  from-[#403d39] to-[#bbb5aa] transition-colors duration-1000 ease-in-out'>
-        <h2 className="text-white text-center text-3xl pt-10">Is under construction
+
+      <div ref={aboutSectionRef} className='h-screen w-full bg-gradient-to-b  from-[#403d39] to-[#bbb5aa] transition-colors duration-1000 ease-in-out '>
+        <h2 className="text-white text-center text-3xl pt-16">This site, Is under construction
         </h2>
       </div>
 
 
 
       <div ref={contactSectionRef} className='h-screen w-full bg-gradient-to-b from-[#bbb5aa] to-[#fffcf2] transition-colors duration-1000 ease-in-out'>
-        <h2 className="text-white text-center text-3xl pt-10">Wait for us.</h2>
+        <h2 className="text-white text-center text-3xl pt-10">Wait for us...</h2>
       </div>
 
       <Footer></Footer>

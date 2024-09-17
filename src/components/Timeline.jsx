@@ -1,34 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoTransact from '../assets/logo_transact_sinfondo.png'; 
+import logoTransact from '../assets/logo_transact_sinfondo.png';
+import imagen1 from '../assets/prompt1/oneone.jpeg'; 
+import imagen2 from '../assets/prompt2/twofour.jpeg'; 
+import imagen3 from '../assets/prompt3/threetwo.jpeg'; 
+import imagen4 from '../assets/prompt4/fourthree.jpeg'; 
+import imagen5 from '../assets/prompt5/fiveone.jpeg'; 
+
+
 
 
 
 const timelineData = [
     {
         title: 'About Us',
-        content: 'At [Company Name], we specialize in creating innovative financial solutions that streamline digital transactions. Our focus is on delivering user-friendly and efficient tools that enhance your financial experience.',
-        image: logoTransact
+        content: 'At Transact, we specialize in creating innovative financial solutions that streamline digital transactions. Our focus is on delivering user-friendly and efficient tools that enhance your financial experience.',
+        image: imagen1
     },
     {
         title: 'Our Mission',
         content: 'Our mission is to elevate the way you manage your finances by offering advanced, reliable solutions. We are dedicated to making financial transactions smoother and more secure, helping you achieve better control over your financial activities.',
-        image: logoTransact
+        image: imagen2
     },
     {
         title: 'Our Team',
         content: 'Our team comprises skilled professionals passionate about integrating technology with finance. With a diverse background and expertise, we work together to develop solutions that cater to your financial needs effectively.',
-        image: logoTransact
+        image: imagen3
     },
     {
         title: 'Our Products',
         content: 'Explore our suite of cutting-edge financial products designed to simplify transactions and enhance your digital experience. From intuitive wallets to powerful transaction tools, our offerings are crafted to meet the demands of modern financial management.',
-        image: logoTransact
+        image: imagen4
     },
     {
         title: 'Contact Us',
         content: 'We are here to assist you with any questions or support you may need. Reach out to us to learn more about how our solutions can benefit you and to explore how we can help you manage your finances more efficiently.',
-        image: logoTransact
+        image: imagen5
     }
 ];
 
@@ -45,13 +52,13 @@ const Timeline = () => {
                 }
                 return prevProgress + 1;
             });
-        }, 50);
+        }, 100);
 
         return () => clearInterval(timer);
     }, []);
 
     return (
-        <div className="flex flex-col lg:flex-row items-center justify-center p-4 lg:mx-20 mx-10  h-screen max-lg:mt-20">
+        <div className="flex flex-col lg:flex-row items-center justify-center p-4 lg:ml-40 mx-10  h-screen  ">
             <div className="flex items-center justify-center w-full lg:w-1/2 h-full ">
                 <ul className="relative">
                     {timelineData.map((item, index) => (
@@ -65,7 +72,7 @@ const Timeline = () => {
                             transition={{ duration: 0.5 }}
                             className="mb-10 ml-9"
                         >
-                            <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white mt-4">
+                            <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white mt-1">
                                 <svg
                                     className="w-3 h-3 text-blue-800"
                                     fill="currentColor"
