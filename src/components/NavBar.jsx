@@ -16,7 +16,7 @@ export const NavBar = ({ scrollToSection }) => {
   // Detecta el desplazamiento para cambiar el estado de "scrolled"
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 1600) {
+      if (window.scrollY >= 1800) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -31,9 +31,8 @@ export const NavBar = ({ scrollToSection }) => {
   }, []);
 
   return (
-    <nav className={`flex justify-between w-full p-4 items-center fixed z-50 transition-all duration-500 ease-in-out 
-      ${isScrolled ? 'bg-transparent' : ' text-white'}`}>
-
+    <nav className={`flex justify-between w-full p-4 items-center fixed z-10 transition-all duration-500 ease-in-out 
+ ${isScrolled ? 'bg-transparent backdrop-blur-sm' : 'bg-transparent backdrop-blur-sm text-white'}`}>
       <div className="flex items-center relative w-12 h-12">
         <img
           src={TransactSvg}
@@ -47,7 +46,7 @@ export const NavBar = ({ scrollToSection }) => {
         />
       </div>
 
-      <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} absolute top-0 right-0 h-screen w-64 bg-black opacity-90 text-white transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
+      <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} absolute top-0 right-0 h-screen w-64 max-[425px]:w-full bg-black opacity-80 text-white transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
         <div className="flex flex-col items-center space-y-4 p-4 mt-16">
           <ButtonNav text="Features" onClick={() => scrollToSection('features')} />
           <ButtonNav text="About" onClick={() => scrollToSection('about')} />
@@ -75,7 +74,7 @@ export const NavBar = ({ scrollToSection }) => {
 
       <div className="lg:hidden flex items-center ml-2">
         <button
-          className="text-white p-2 relative"
+          className={`p-2 relative transition-colors duration-300 ease-in-out ${isMenuOpen ? 'text-white' : (isScrolled ? 'text-black' : 'text-white')}`}
           onClick={toggleMenu}
         >
           <svg
@@ -97,6 +96,7 @@ export const NavBar = ({ scrollToSection }) => {
           </svg>
         </button>
       </div>
+
     </nav>
   );
 };

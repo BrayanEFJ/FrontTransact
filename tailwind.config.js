@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        oldstandard: ['"Old Standard TT"', 'serif'],
+      },
+    },
+
   },
   plugins: [],
 }
