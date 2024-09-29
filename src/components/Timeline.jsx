@@ -70,8 +70,8 @@ const Timeline = forwardRef((props, ref) => {
     return (
 
         <div ref={ref} className='flex flex-col items-center justify-center  w-full bg-black'>
-            <div className=' flex flex-wrap w-full  text-white lg:flex-row bg-gradient-to-b  from-black to-[#403d39] mx-10  justify-center'>
-                <div className="flex flex-col lg:flex-row items-center justify-center max-xl:p-10 p-4 xl:h-screen max-w-7xl  ">
+            <div className=' flex flex-wrap w-full  text-white lg:flex-row bg-gradient-to-b  from-black to-[#494641] mx-10  justify-center'>
+                <div className="flex flex-col lg:flex-row items-center justify-center max-xl:p-10 p-4 xl:h-[80vh] max-w-7xl  ">
                     <div className="flex items-center justify-center w-full max-lglg:w-1/2 h-full max-lg:flex-wrap">
                         <ul className="relative">
                             {timelineData.map((item, index) => (
@@ -140,7 +140,7 @@ const Timeline = forwardRef((props, ref) => {
                                     key={currentIndex}
                                     src={timelineData[currentIndex].image}
                                     alt={timelineData[currentIndex].title}
-                                    className="w-full md:w-2/3 object-contain max-h-screen"
+                                    className="w-full md:w-2/3 object-contain max-h-screen rounded-3xl"
                                     initial={{ opacity: 0, x: 20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: -20 }}

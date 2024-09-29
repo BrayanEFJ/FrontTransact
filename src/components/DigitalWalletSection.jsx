@@ -3,7 +3,7 @@ import { Wallet, Shield, ChartBar } from 'lucide-react';
 
 const DigitalWalletSection = forwardRef((props, ref) => {
     return (
-        <div ref={ref} className="flex w-full justify-center items-center min-h-screen max-sm:py-10 bg-gradient-to-b from-[#403d39] to-[#bbb5aa] text-white">
+        <div ref={ref} className="flex w-full justify-center items-center min-h-[70vh] max-sm:py-10 bg-gradient-to-b from-[#494641] to-[#bbb5aa] text-white">
             <div className='flex flex-col w-full max-w-7xl max-xl:mx-10'>
                 <div className='max-w-[750px] flex flex-col mb-10'>
                     <span>Your money, under total control.</span>

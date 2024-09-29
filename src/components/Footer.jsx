@@ -32,11 +32,8 @@ const Footer = () => {
                             </div>
 
                             <div className="mt-8 space-y-4 lg:mt-0">
-                                <img
-                                    src={Perfil}
-                                    alt="My Icon"
-                                    className="w-14 h-14 cursor-pointer rounded-full bg-red-500"
-                                ></img>                                <div>
+                                <span className="hidden h-1 w-10 rounded bg-gradient-to-r from-black to-[#403d39] lg:block"></span>
+                                <div>
 
                                     <h2 className="text-2xl font-medium text-gray-900">
                                         Request a quote
@@ -78,7 +75,7 @@ const Footer = () => {
                                                 id="helper-text-explanation"
                                                 className="mt-2 text-sm text-gray-500 dark:text-gray-400"
                                             >
-                                           The first step is the key to change.
+                                                The first step is the key to change.
                                             </p>
                                         </div>
                                     </form>
