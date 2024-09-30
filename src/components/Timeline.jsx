@@ -7,8 +7,6 @@ import imagen5 from '../assets/prompt5/fiveone.jpeg';
 import { Info } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-
-
 const Timeline = forwardRef((props, ref) => {
     const { t } = useTranslation();  // Hook para traducción
 
@@ -35,11 +33,28 @@ const Timeline = forwardRef((props, ref) => {
         }
     ];
 
-
-
     const [currentIndex, setCurrentIndex] = useState(0);
     const [progress, setProgress] = useState(0);
     const [isXL, setIsXL] = useState(false);  // Estado para controlar el tamaño de la pantalla
+    const [imagesLoaded, setImagesLoaded] = useState(false); // Estado para controlar la carga de imágenes
+
+    // Pre-cargar imágenes
+    useEffect(() => {
+        const preloadImages = async () => {
+            const imagePromises = timelineData.map(item => {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.src = item.image;
+                    img.onload = () => resolve(); // Resuelve cuando la imagen ha cargado
+                });
+            });
+
+            await Promise.all(imagePromises); // Espera a que todas las imágenes se carguen
+            setImagesLoaded(true); // Actualiza el estado a "cargado"
+        };
+
+        preloadImages();
+    }, [timelineData]);
 
     // Detectar el tamaño de la pantalla
     useEffect(() => {
@@ -72,10 +87,9 @@ const Timeline = forwardRef((props, ref) => {
     };
 
     return (
-
-        <div ref={ref} className='flex flex-col items-center justify-center  w-full bg-black'>
-            <div className=' flex flex-wrap w-full  text-white lg:flex-row bg-gradient-to-b  from-black to-[#494641]  justify-center'>
-                <div className="flex flex-col lg:flex-row items-center justify-center max-xl:p-10 p-4 xl:h-[80vh] max-w-7xl xl:mx-10  ">
+        <div ref={ref} className='flex flex-col items-center justify-center w-full bg-black'>
+            <div className='flex flex-wrap w-full text-white lg:flex-row bg-gradient-to-b from-black to-[#494641] justify-center'>
+                <div className="flex flex-col lg:flex-row items-center justify-center max-xl:p-10 p-4 xl:h-[80vh] max-w-7xl lg:mx-10">
                     <div className="flex items-center justify-center w-full max-lglg:w-1/2 h-full max-lg:flex-wrap">
                         <ul className="relative">
                             {timelineData.map((item, index) => (
@@ -110,16 +124,13 @@ const Timeline = forwardRef((props, ref) => {
                                                 transition={{ duration: 0.5 }}
                                                 className="overflow-hidden"
                                             >
-
                                             </motion.div>
                                             <p className="mb-4 text-base font-normal text-white">
                                                 {item.content}
                                             </p>
                                         </>
-
                                     ) : (
                                         <>
-
                                             <motion.div
                                                 initial={{ opacity: 0, height: 0 }}
                                                 animate={{
@@ -133,32 +144,34 @@ const Timeline = forwardRef((props, ref) => {
                                                 </p>
                                             </motion.div>
                                         </>
-
                                     )}
                                 </motion.li>
                             ))}
                         </ul>
                         <div className="w-full lg:mt-0 flex items-center justify-center max-h-screen">
-                            <AnimatePresence mode="wait">
-                                <motion.img
-                                    key={currentIndex}
-                                    src={timelineData[currentIndex].image}
-                                    alt={timelineData[currentIndex].title}
-                                    className="w-full md:w-2/3 object-contain max-h-screen rounded-3xl"
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -20 }}
-                                    transition={{ duration: 0.5 }}
-                                />
-                            </AnimatePresence>
+                            {imagesLoaded ? (
+                                <AnimatePresence mode="wait">
+                                    <motion.img
+                                        key={currentIndex}
+                                        src={timelineData[currentIndex].image}
+                                        alt={timelineData[currentIndex].title}
+                                        className="w-full md:w-2/3 object-contain max-h-screen rounded-3xl"
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: -20 }}
+                                        transition={{ duration: 0.5 }}
+                                    />
+                                </AnimatePresence>
+                            ) : (
+                                <div className="w-full md:w-2/3 h-64 bg-gray-300 flex items-center justify-center rounded-3xl">
+                                    <span className="text-gray-600">Loading...</span>
+                                </div>
+                            )}
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-
     );
 });
 
