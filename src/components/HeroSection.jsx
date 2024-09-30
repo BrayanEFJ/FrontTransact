@@ -17,7 +17,7 @@ const HeroSection = () => {
     return (
         <div className='flex flex-wrap w-full min-h-screen text-white lg:flex-row bg-black justify-center' >
             <div className="flex flex-col lg:flex-row items-center max-w-7xl mx-10">
-                <div className="lg:w-1/2 mb-12 lg:mb-0 max-xl:mx-8 max-lg:mt-36">
+                <div className="lg:w-1/2 mb-12 lg:mb-0 max-xl:mx-4 max-lg:mt-36">
                     <div className="flex items-center mb-4">
                         <span className="bg-gray-100 text-gray-800 text-sm font-medium p-4 py-1 rounded-full mr-2">{t('hero_news')}</span>
                         <span className="text-gray-200">{t('hero_version')}</span>
