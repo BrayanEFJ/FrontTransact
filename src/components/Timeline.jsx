@@ -5,34 +5,38 @@ import imagen3 from '../assets/prompt3/threetwo.jpeg';
 import imagen4 from '../assets/prompt4/fourthree.jpeg';
 import imagen5 from '../assets/prompt5/fiveone.jpeg';
 import { Info } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 
-
-const timelineData = [
-    {
-        title: 'About Us',
-        content: 'At Transact, we specialize in creating innovative financial solutions that streamline digital transactions. Our focus is on delivering user-friendly and efficient tools that enhance your financial experience.',
-        image: imagen1
-    },
-
-    {
-        title: 'Our Team',
-        content: 'Our team comprises skilled professionals passionate about integrating technology with finance. With a diverse background and expertise, we work together to develop solutions that cater to your financial needs effectively.',
-        image: imagen3
-    },
-    {
-        title: 'Our Products',
-        content: 'Explore our suite of cutting-edge financial products designed to simplify transactions and enhance your digital experience. From intuitive wallets to powerful transaction tools, our offerings are crafted to meet the demands of modern financial management.',
-        image: imagen4
-    },
-    {
-        title: 'Contact Us',
-        content: 'We are here to assist you with any questions or support you may need. Reach out to us to learn more about how our solutions can benefit you and to explore how we can help you manage your finances more efficiently.',
-        image: imagen5
-    }
-];
 
 const Timeline = forwardRef((props, ref) => {
+    const { t } = useTranslation();  // Hook para traducción
+
+    const timelineData = [
+        {
+            title: t('about_us_title'),
+            content: t('about_us_content'),
+            image: imagen1
+        },
+        {
+            title: t('our_team_title'),
+            content: t('our_team_content'),
+            image: imagen3
+        },
+        {
+            title: t('our_products_title'),
+            content: t('our_products_content'),
+            image: imagen4
+        },
+        {
+            title: t('contact_us_title'),
+            content: t('contact_us_content'),
+            image: imagen5
+        }
+    ];
+
+
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const [progress, setProgress] = useState(0);
     const [isXL, setIsXL] = useState(false);  // Estado para controlar el tamaño de la pantalla
@@ -70,8 +74,8 @@ const Timeline = forwardRef((props, ref) => {
     return (
 
         <div ref={ref} className='flex flex-col items-center justify-center  w-full bg-black'>
-            <div className=' flex flex-wrap w-full  text-white lg:flex-row bg-gradient-to-b  from-black to-[#494641] mx-10  justify-center'>
-                <div className="flex flex-col lg:flex-row items-center justify-center max-xl:p-10 p-4 xl:h-[80vh] max-w-7xl  ">
+            <div className=' flex flex-wrap w-full  text-white lg:flex-row bg-gradient-to-b  from-black to-[#494641]  justify-center'>
+                <div className="flex flex-col lg:flex-row items-center justify-center max-xl:p-10 p-4 xl:h-[80vh] max-w-7xl xl:mx-10  ">
                     <div className="flex items-center justify-center w-full max-lglg:w-1/2 h-full max-lg:flex-wrap">
                         <ul className="relative">
                             {timelineData.map((item, index) => (

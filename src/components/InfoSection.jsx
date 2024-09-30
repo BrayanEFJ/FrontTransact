@@ -2,8 +2,8 @@ const InfoSection = () => {
 
     return (
         <>
-            <div className=' flex flex-col items-center justify-center  w-full bg-black text-white '>
-                <div className=" flex flex-wrap max-w-7xl justify-center items-center w-full  max-xl:p-8">
+            <div className=' flex flex-col items-center justify-center  w-full bg-black text-white px-10'>
+                <div className=" flex flex-wrap max-w-7xl justify-center items-center w-full  max-xl:py-8 ">
                     <div className="flex max-md:w-auto w-1/2 ">
                         <div className="flex flex-col ">
                             Trusted

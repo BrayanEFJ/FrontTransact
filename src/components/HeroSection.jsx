@@ -16,7 +16,7 @@ const HeroSection = () => {
         <div className=' flex flex-wrap w-full min-h-screen text-white lg:flex-row bg-black  justify-center' >
 
 
-            <div className="flex flex-col lg:flex-row items-center max-w-7xl">
+            <div className="flex flex-col lg:flex-row items-center max-w-7xl mx-10">
                 {/* Left side content */}
                 <div className="lg:w-1/2 mb-12 lg:mb-0 max-xl:mx-8 max-lg:mt-36">
                     <div className="flex items-center mb-4">

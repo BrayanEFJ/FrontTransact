@@ -5,7 +5,7 @@ import { Mail, Phone,Linkedin, MapPin } from 'lucide-react';
 const ContactSection = forwardRef((props, ref) => {
     return (
         <div ref={ref} className="flex w-full justify-center items-center max-sm:min-h-screen py-20 bg-gradient-to-b from-[#bbb5aa] to-[#fffcf2] text-black ">
-            <div className='flex flex-col w-full max-w-7xl max-xl:mx-10'>
+            <div className='flex flex-col w-full max-w-7xl mx-10'>
                 <div className='max-w-[750px] flex flex-col mb-10'>
                     <span>Contact</span>
                     <span className='text-5xl font-bold mt-3'>Contact Us</span>
