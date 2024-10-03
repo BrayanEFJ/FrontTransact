@@ -1,11 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, lazy, Suspense } from 'react';
 import { NavBar } from '../components/NavBar';
-import TimeLine from '../components/Timeline.jsx';
-import Footer from '../components/Footer.jsx';
-import HeroSection from '../components/HeroSection.jsx';
-import InfoSection from '../components/InfoSection.jsx';
-import DigitalWalletSection from '../components/DigitalWalletSection.jsx';
-import ContactSection from '../components/ContactSection.jsx';
+
+const TimeLine = lazy(() => import('../components/Timeline.jsx'));
+const Footer = lazy(() => import('../components/Footer.jsx'));
+const HeroSection = lazy(() => import('../components/HeroSection.jsx'));
+const InfoSection = lazy(() => import('../components/InfoSection.jsx'));
+const DigitalWalletSection = lazy(() => import('../components/DigitalWalletSection.jsx'));
+const ContactSection = lazy(() => import('../components/ContactSection.jsx'));
 
 const Home = () => {
   const aboutSectionRef = useRef(null);
@@ -41,12 +42,14 @@ const Home = () => {
   return (
     <>
       <NavBar scrollToSection={scrollToSection} />
-      <HeroSection />
-      <InfoSection />
-      <TimeLine ref={featuresSectionRef} />
-      <DigitalWalletSection ref={aboutSectionRef} />
-      <ContactSection ref={contactSectionRef} />
-      <Footer />
+      <Suspense fallback={<div>Loading...</div>}>
+        <HeroSection />
+        <InfoSection />
+        <TimeLine ref={featuresSectionRef} />
+        <DigitalWalletSection ref={aboutSectionRef} />
+        <ContactSection ref={contactSectionRef} />
+        <Footer />
+      </Suspense>
     </>
   );
 };
