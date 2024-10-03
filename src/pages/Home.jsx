@@ -42,14 +42,12 @@ const Home = () => {
   return (
     <>
       <NavBar scrollToSection={scrollToSection} />
-      <Suspense fallback={<div>Loading...</div>}>
         <HeroSection />
         <InfoSection />
         <TimeLine ref={featuresSectionRef} />
         <DigitalWalletSection ref={aboutSectionRef} />
         <ContactSection ref={contactSectionRef} />
         <Footer />
-      </Suspense>
     </>
   );
 };
