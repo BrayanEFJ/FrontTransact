@@ -89,16 +89,16 @@ const Footer = () => {
 
                                     <ul className="mt-6 space-y-4 text-sm">
                                         <li>
-                                            <a className="text-gray-700 transition hover:opacity-75">{t('design_advice')}</a>
+                                            <p className="text-gray-700 transition hover:opacity-75">{t('design_advice')}</p>
                                         </li>
                                         <li>
-                                            <a className="text-gray-700 transition hover:opacity-75">{t('frontend_development')}</a>
+                                            <p className="text-gray-700 transition hover:opacity-75">{t('frontend_development')}</p>
                                         </li>
                                         <li>
-                                            <a className="text-gray-700 transition hover:opacity-75">{t('backend_development')}</a>
+                                            <p className="text-gray-700 transition hover:opacity-75">{t('backend_development')}</p>
                                         </li>
                                         <li>
-                                            <a className="text-gray-700 transition hover:opacity-75">{t('backend_integrations')}</a>
+                                            <p className="text-gray-700 transition hover:opacity-75">{t('backend_integrations')}</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -107,13 +107,13 @@ const Footer = () => {
                             <div className="mt-8 border-t border-gray-100 pt-8">
                                 <ul className="flex flex-wrap gap-4 text-xs">
                                     <li>
-                                        <a className="text-gray-500 transition hover:opacity-75">{t('terms_conditions')}</a>
+                                        <p className="text-gray-500 transition hover:opacity-75">{t('terms_conditions')}</p>
                                     </li>
                                     <li>
-                                        <a className="text-gray-500 transition hover:opacity-75">{t('privacy_policy')}</a>
+                                        <p className="text-gray-500 transition hover:opacity-75">{t('privacy_policy')}</p>
                                     </li>
                                     <li>
-                                        <a className="text-gray-500 transition hover:opacity-75">Cookies</a>
+                                        <p className="text-gray-500 transition hover:opacity-75">Cookies</p>
                                     </li>
                                 </ul>
                                 <p className="mt-8 text-xs text-gray-500">&copy; 2024. Brayan Esneider Figueroa Jerez. All rights reserved.</p>

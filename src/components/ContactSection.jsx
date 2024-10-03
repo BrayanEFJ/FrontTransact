@@ -17,7 +17,7 @@ const ContactSection = forwardRef((props, ref) => {
                     {[
                         { icon: Mail, title: t('email'), description: t('email_description'), info: "brayanfigueroajerez@gmail.com", href: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" },
                         { icon: Linkedin, title: t('linkedin'), description: t('linkedin_description'), info: "www.linkedin.com/in/brayan-figueroa-8078581aa", href: "https://www.linkedin.com/in/brayan-figueroa-8078581aa/" },
-                        { icon: MapPin, title: t('location'), description: t('location_description'), info: "Bucaramanga, Santander, Colombia" }
+                        { icon: MapPin, title: t('location'), description: t('location_description'), info: "Bucaramanga, Santander, Colombia", href:"https://www.google.com/maps/place/Bucaramanga,+Santander/@7.1184646,-73.1741777,13z/data=!3m1!4b1!4m6!3m5!1s0x8e68157af751c0ed:0x75a0e4551148c36c!8m2!3d7.119349!4d-73.1227416!16zL20vMDM3eXNj?entry=ttu&g_ep=EgoyMDI0MDkzMC4wIKXMDSoASAFQAw%3D%3D*"}
                     ].map((item, index) => (
                         <div key={index} className='w-full md:w-[calc(33.333%-1rem)] flex flex-col p-5'>
                             <item.icon className="h-10 w-10" />
