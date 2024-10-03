@@ -38,12 +38,12 @@ export const NavBar = ({ scrollToSection }) => {
                 <img
                     src={TransactSvg}
                     alt="Logo"
-                    className={`absolute w-full h-full transition-opacity duration-500 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}
+                    className={`absolute w-full h-auto transition-opacity duration-500 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}
                 />
                 <img
                     src={TransactSvgBlack}
                     alt="Logo Black"
-                    className={`absolute w-full h-full transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
+                    className={`absolute w-full h-auto transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
                 />
             </div>
 
