@@ -1,9 +1,9 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import imagen1 from '../assets/prompt1/oneone.jpeg';
-import imagen3 from '../assets/prompt3/threetwo.jpeg';
-import imagen4 from '../assets/prompt4/fourthree.jpeg';
-import imagen5 from '../assets/prompt5/fiveone.jpeg';
+import imagen1 from '../assets/prompt1/oneone.webp';
+import imagen3 from '../assets/prompt3/threetwo.webp';
+import imagen4 from '../assets/prompt4/fourthree.webp';
+import imagen5 from '../assets/prompt5/fiveone.webp';
 import { Info } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -106,12 +106,12 @@ const Timeline = forwardRef((props, ref) => {
                                     <span className="absolute flex items-center justify-center w-6 h-6 bg-slate-700 rounded-full -left-3 ring-8 ring-white mt-1 text-white">
                                         <Info className='h-4 w-4'></Info>
                                     </span>
-                                    <h3
+                                    <h1
                                         className="flex items-center mb-1 text-lg font-semibold text-gray-400 cursor-pointer"
                                         onClick={() => handleTitleClick(index)}
                                     >
                                         {item.title}
-                                    </h3>
+                                    </h1>
 
                                     {isXL ? (
                                         <>

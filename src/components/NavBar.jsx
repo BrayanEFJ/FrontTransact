@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import TransactSvg from '../assets/logo_transact_sinfondo.png';
-import TransactSvgBlack from '../assets/logo_transact_sinfondo_black.png';
+import TransactSvg from '../assets/logo_transact_sinfondo.webp';
+import TransactSvgBlack from '../assets/logo_transact_sinfondo_black.webp';
 import ButtonNav from './ButtonNavBar.jsx';
 import LanguageDropdown from './LanguageDropdownNav.jsx';
 import { useTranslation } from 'react-i18next'; 
@@ -80,6 +80,8 @@ export const NavBar = ({ scrollToSection }) => {
                 <button
                     className={`p-2 relative transition-colors duration-300 ease-in-out ${isMenuOpen ? 'text-white' : (isScrolled ? 'text-black' : 'text-white')}`}
                     onClick={toggleMenu}
+                    aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} // Proporciona un nombre accesible
+
                 >
                     <svg
                         className={`w-6 h-6 transition-transform duration-1000 ease-in-out ${isMenuOpen ? 'rotate-90' : ''}`}

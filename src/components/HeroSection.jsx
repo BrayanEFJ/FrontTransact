@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import VisaLogo from '../assets/visalogo.png';
-import TransactSvg from '../assets/logo_transact_sinfondo.png';
+import VisaLogo from '../assets/visalogo.webp';
+import TransactSvg from '../assets/logo_transact_sinfondo.webp';
 import ChoosecolorButton from '../components/ChooseColorButton.jsx';
 import { useTranslation } from 'react-i18next';
 
@@ -22,7 +22,7 @@ const HeroSection = () => {
                         <span className="bg-gray-100 text-gray-800 text-sm font-medium p-4 py-1 rounded-full mr-2">{t('hero_news')}</span>
                         <span className="text-gray-200">{t('hero_version')}</span>
                     </div>
-                    <h1 className="text-5xl font-bold mb-6">{t('hero_title')}</h1>
+                    <span className="text-5xl font-bold mb-6">{t('hero_title')}</span>
                     <p className="text-xl text-gray-200 mb-8">{t('hero_description')}</p>
                     <div className="flex flex-wrap gap-4">
                         <button className="bg-white text-black px-6 py-3 rounded-lg font-medium">{t('get_started')}</button>
@@ -85,9 +85,10 @@ const CardContent = () => (
             <div>Transact</div>
             <img
                 src={VisaLogo}
-                alt="My Icon"
-                className="w-14 h-8 cursor-pointer"
+                alt="Visa Logo"
+                className="w-14 h-auto cursor-pointer"
             />
+
         </div>
     </>
 );

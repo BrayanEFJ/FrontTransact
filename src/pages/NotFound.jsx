@@ -1,6 +1,6 @@
 import React from 'react';
-import VisaLogo from '../assets/visalogo.png';
-import TransactSvg from '../assets/logo_transact_sinfondo.png';
+import VisaLogo from '../assets/visalogo.webp';
+import TransactSvg from '../assets/logo_transact_sinfondo.webp';
 
 const NotFound = () => {
   const handleGoBack = () => {
