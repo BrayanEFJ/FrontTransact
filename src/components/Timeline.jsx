@@ -8,7 +8,7 @@ import { Info } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const Timeline = forwardRef((props, ref) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation();  // Hook para traducción
 
     const timelineData = [
         {
@@ -35,49 +35,34 @@ const Timeline = forwardRef((props, ref) => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [progress, setProgress] = useState(0);
-    const [isXL, setIsXL] = useState(false);
-    const [imagesLoaded, setImagesLoaded] = useState(false);
-    const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
+    const [isXL, setIsXL] = useState(false);  // Estado para controlar el tamaño de la pantalla
+    const [imagesLoaded, setImagesLoaded] = useState(false); // Estado para controlar la carga de imágenes
 
-    // Pre-cargar imágenes y obtener dimensiones máximas
+    // Pre-cargar imágenes
     useEffect(() => {
         const preloadImages = async () => {
-            const dimensions = await Promise.all(
-                timelineData.map(item => {
-                    return new Promise((resolve) => {
-                        const img = new Image();
-                        img.src = item.image;
-                        img.onload = () => {
-                            resolve({
-                                width: img.width,
-                                height: img.height
-                            });
-                        };
-                    });
-                })
-            );
+            const imagePromises = timelineData.map(item => {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.src = item.image;
+                    img.onload = () => resolve(); // Resuelve cuando la imagen ha cargado
+                });
+            });
 
-            // Encontrar las dimensiones máximas manteniendo el aspect ratio
-            const maxDimensions = dimensions.reduce((acc, curr) => {
-                return {
-                    width: Math.max(acc.width, curr.width),
-                    height: Math.max(acc.height, curr.height)
-                };
-            }, { width: 0, height: 0 });
-
-            setContainerDimensions(maxDimensions);
-            setImagesLoaded(true);
+            await Promise.all(imagePromises); // Espera a que todas las imágenes se carguen
+            setImagesLoaded(true); // Actualiza el estado a "cargado"
         };
 
         preloadImages();
     }, [timelineData]);
 
+    // Detectar el tamaño de la pantalla
     useEffect(() => {
         const handleResize = () => {
             setIsXL(window.innerWidth >= 1280);
         };
         window.addEventListener('resize', handleResize);
-        handleResize();
+        handleResize(); // Verificar el tamaño de pantalla en el renderizado inicial
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
@@ -95,6 +80,7 @@ const Timeline = forwardRef((props, ref) => {
         return () => clearInterval(timer);
     }, []);
 
+    // Manejar clic en el título
     const handleTitleClick = (index) => {
         setCurrentIndex(index === currentIndex ? currentIndex : index);
         setProgress(index);
@@ -162,32 +148,25 @@ const Timeline = forwardRef((props, ref) => {
                                 </motion.li>
                             ))}
                         </ul>
-                        <div 
-                            className="w-full lg:mt-0 flex items-center justify-center relative"
-                            style={{
-                                minHeight: imagesLoaded ? '500px' : 'auto' // Altura mínima fija
-                            }}
-                        >
-                            <div className="w-full md:w-2/3 relative flex items-center justify-center">
-                                {imagesLoaded ? (
-                                    <AnimatePresence mode="wait">
-                                        <motion.img
-                                            key={currentIndex}
-                                            src={timelineData[currentIndex].image}
-                                            alt={timelineData[currentIndex].title}
-                                            className="object-contain rounded-3xl absolute top-0 left-0 w-full h-full"
-                                            initial={{ opacity: 0, x: 20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: -20 }}
-                                            transition={{ duration: 0.5 }}
-                                        />
-                                    </AnimatePresence>
-                                ) : (
-                                    <div className="w-full h-64 bg-gray-300 flex items-center justify-center rounded-3xl">
-                                        <span className="text-gray-600">Loading...</span>
-                                    </div>
-                                )}
-                            </div>
+                        <div className="w-full lg:mt-0 flex items-center justify-center max-h-screen">
+                            {imagesLoaded ? (
+                                <AnimatePresence mode="wait">
+                                    <motion.img
+                                        key={currentIndex}
+                                        src={timelineData[currentIndex].image}
+                                        alt={timelineData[currentIndex].title}
+                                        className="w-full md:w-2/3 object-contain max-h-screen rounded-3xl"
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: -20 }}
+                                        transition={{ duration: 0.5 }}
+                                    />
+                                </AnimatePresence>
+                            ) : (
+                                <div className="w-full md:w-2/3 h-64 bg-gray-300 flex items-center justify-center rounded-3xl">
+                                    <span className="text-gray-600">Loading...</span>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
