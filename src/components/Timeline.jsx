@@ -87,7 +87,7 @@ const Timeline = forwardRef((props, ref) => {
     };
 
     return (
-        <div ref={ref} className='flex flex-col items-center justify-center w-full bg-black'>
+        <div ref={ref} className='flex flex-col items-center justify-center w-full bg-black pt-10'>
             <div className='flex flex-wrap w-full text-white lg:flex-row bg-gradient-to-b from-black to-[#494641] justify-center'>
                 <div className="flex flex-col lg:flex-row items-center justify-center max-xl:p-10 p-4 xl:h-[80vh] max-w-7xl lg:mx-10">
                     <div className="flex items-center justify-center w-full max-lglg:w-1/2 h-full max-lg:flex-wrap">
